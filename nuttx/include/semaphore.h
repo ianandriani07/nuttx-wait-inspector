@@ -142,6 +142,13 @@ struct sem_s
 
 typedef struct sem_s sem_t;
 
+struct sem_wait_info_s
+{
+  uint32_t total_waiters;
+  uint32_t waiters_ge_threshold;
+  int max_priority;
+};
+
 /* Initializers */
 
 #ifdef CONFIG_PRIORITY_INHERITANCE
@@ -258,6 +265,8 @@ int sem_setprotocol(FAR sem_t *sem, int protocol);
  ****************************************************************************/
 
 int sem_getprotocol(FAR sem_t *sem, FAR int *protocol);
+
+int sem_get_wait_info(FAR sem_t *sem, int min_priority, FAR struct sem_wait_info_s *info);
 
 #undef EXTERN
 #ifdef __cplusplus

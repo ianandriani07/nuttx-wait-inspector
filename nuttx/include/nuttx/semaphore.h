@@ -426,6 +426,8 @@ int nxsem_post_slow(FAR sem_t *sem);
 
 int nxsem_get_value(FAR sem_t *sem, FAR int *sval);
 
+int nxsem_get_wait_info(FAR sem_t *sem, int min_priority, FAR struct sem_wait_info_s *info);
+
 #ifdef CONFIG_CUSTOM_SEMAPHORE_MAXVALUE
 /****************************************************************************
  * Name:  nxsem_setmaxvalue

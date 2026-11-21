@@ -1,0 +1,23 @@
+config EXAMPLES_WAIT_INSPECTOR
+	tristate "NuttX Wait Inspector"
+	default n
+	depends on !DISABLE_PTHREAD
+	---help---
+		Test sem_get_wait_info() with tasks waiting on a semaphore.
+
+if EXAMPLES_WAIT_INSPECTOR
+
+config EXAMPLES_WAIT_INSPECTOR_PROGNAME
+    string "Program name"
+    default "wait_inspector"
+
+config EXAMPLES_WAIT_INSPECTOR_PRIORITY
+    int "Main task priority"
+    range 1 255
+    default 100
+
+config EXAMPLES_WAIT_INSPECTOR_STACKSIZE
+    int "Main stask stack size"
+    default 4096
+
+endif
